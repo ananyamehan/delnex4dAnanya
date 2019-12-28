@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<script type="text/javascript">
+		
+		function checkPassword(){
+			var password = document.getElementById('pass').value
+			var confirmPassword = document.getElementById('confirm_password').value
+			if(password==confirmPassword){
+				return true;
+			}	
+			else{
+				alert("Passwords do not match!")
+			}
+		}
+
+		function showPass(){ 
+            var p = document.getElementById("pass"); 
+            var cP = document.getElementById("confirm_password"); 
+            if (p.type === "password" && cP.type === "password" ) { 
+                p.type = "text"; 
+                cP.type = "text"; 
+            } 
+            else { 
+                p.type = "password"; 
+                cP.type = "password"; 
+            } 
+        } 
+
+        function fillData(){
+
+		educationArr=['Select', 'Graduation','Post Graduation']
+		var e = document.getElementById("edu");
+
+		for(i=0;i<educationArr.length;i++){
+			var ele=document.createElement('option')
+			ele.text=educationArr[i];
+			e.add(ele,i)
+			}
+		}
+
+		function fillOpts(){
+		degreeArr=[['Bachelor of Architecture','Bachelor of Arts','Bachelor of Business','Bachelor of Economics','Bachelor of Computer Applications'],['Graduate Diploma in Law','Masters in Management ','Graduate Diploma in Law']]
+		var e= document.getElementById("edu");
+		var d= document.getElementById("degree");
+
+		d.innerHTML=null;
+
+		index= e.selectedIndex;
+		console.log();
+
+		if(index>0){
+ 		for(i=0;i<degreeArr[index-1].length;i++){
+        	var ele1=document.createElement('option');
+            ele1.text=degreeArr[index-1][i];
+        	d.add(ele1,i);     
+        	}
+		}
+
+		}
+
+		function checkDate(){
+			var d=new Date();
+			var udate = document.getElementById('dob').value
+			var current_year = d.getFullYear();
+			var uyear = udate.getFullYear();
+			
+			if((current_year-uyear)<18){
+				document.getElementById('dob').min = current_year-18+'-'+mon+'-'+d; 
+
+			}
+               
+		}		
+
+
+	</script>
+</head>
+<body onload="fillData()">
+	<form>
+	<center><h1> Registration form </h1></center>
+	<center><table>
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" name="p" id="pass" required></td>
+		</tr>
+		<tr>
+			<td>Confirm Password: </td>
+			<td><input type="password" name="cPass" id = "confirm_password" required></td>
+		</tr>
+		<tr>
+			<td colspan="2"><center><input type="checkbox" name="showP" value="sPass" id ="showPassword" onclick="showPass()">Show Password</center></td>
+		</tr>
+		<tr>
+			<td><select id="edu" onchange ="fillOpts()" required></select></td>
+			<td><select id="degree" required></select></td>
+		</tr>
+		<tr>
+			<td>Date of Birth:</td>
+			<td><input type="date" name="d" id="dob" onclick="checkDate()" required></td>
+		</tr>
+		<tr>
+			<td colspan="2"><center><button type="button" onclick="checkPassword()">Submit</button></center></td>
+		</tr>
+
+	
+	</table></center>
+	</form>
+</body>
+</html>
