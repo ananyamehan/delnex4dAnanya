@@ -1,0 +1,106 @@
+package delnex4d_JAVA;
+
+import java.util.ArrayList;
+
+public class Showroom {
+	
+	String showroomName;
+	ArrayList<Cars> cars; 
+	
+	public String getShowroomName() {
+		return showroomName;
+	}
+	public void setShowroomName(String showroomName) {
+		this.showroomName = showroomName;
+	}
+	
+	public ArrayList<Cars> getCars() {
+		return cars;
+		}
+	
+	public void setCars(ArrayList<Cars> cars) {
+		this.cars = cars;
+		}
+	
+
+}
+
+------------------------------------------------------------------------------------------
+
+package delnex4d_JAVA;
+
+public class Cars {
+	
+	String carName;
+	String type;
+	String model;
+	
+	public String getCarName() {
+		return carName;
+	}
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public Cars(String carName, String type, String model) {
+		super();
+		this.carName = carName;
+		this.type = type;
+		this.model = model;
+	}
+	
+	@Override
+	public String toString() {
+	return "Cars [Car Name=" + carName + ", Type=" + type + ", Model=" + model + "]";
+	}
+
+}
+
+------------------------------------------------------------------------------------------
+
+package delnex4d_JAVA;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class CarsShowroom {
+
+	public static void main(String[] args) {
+		
+		Cars c1 = new Cars("i20", "Sedan", "A100");
+		
+		Showroom sObj = new Showroom();
+		sObj.setShowroomName("Hyundai");
+		
+		ArrayList<Cars> cars=new ArrayList<>();
+		cars.add(c1);
+		
+		sObj.setCars(cars);
+		
+		//System.out.println(sObj.getShowroomName());
+
+		
+		HashMap<String, Cars> carShowroom = new HashMap();
+
+		carShowroom.put(sObj.getShowroomName(), c1);
+
+
+		Cars car1=carShowroom.get("Hyundai");
+
+		System.out.println(car1);	
+
+	}
+
+}
+
