@@ -1,0 +1,30 @@
+package delnex4d_JAVA;
+
+public class reverseString
+{
+   public void rev(String str)
+   {
+
+	String[] words = str.split(" ");
+	String revStr = "";
+	for (int i = 0; i < words.length; i++)
+        {
+           String word = words[i]; 
+           String revWord = "";
+           for (int j = word.length()-1; j >= 0; j--) {
+
+        	   revWord = revWord + word.charAt(j);
+	   }
+           revStr  = revStr  + revWord + " ";
+	}
+	System.out.println("String: " + str);
+	System.out.println("Word by Word Reverse: " + revStr );
+	System.out.println();
+   }
+   public static void main(String[] args) 
+   {
+	   reverseString obj = new reverseString();
+	   obj.rev("This is the world of java");
+	   obj.rev("Welcome to the world of java");
+   }
+}
